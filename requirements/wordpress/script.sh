@@ -16,7 +16,7 @@ if [ ! -f wp-config.php ]; then
     chmod +x wp-cli.phar
     ./wp-cli.phar core download --allow-root
     ./wp-cli.phar config create --dbname=wordpress --dbuser=wpuser --dbpass=password --dbhost=mariadb --allow-root
-    ./wp-cli.phar core install --url=localhost --title=inception --admin_user=admin --admin_password=admin --admin_email=admin@admin.com --allow-root
+    ./wp-cli.phar core install --url=localhost --title=blyat --admin_user=admin --admin_password=admin --admin_email=admin@admin.com --allow-root
     echo "WordPress setup completed!"
 else
     echo "WordPress already configured, skipping setup..."
