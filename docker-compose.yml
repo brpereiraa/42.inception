@@ -4,8 +4,10 @@ services:
     container_name: nginx
     ports:
       - "80:80" 
+      - "443:443"
     volumes: 
       - web:/var/www/html
+      - ./secrets:/etc/nginx/secrets
     depends_on:
       - wordpress
       - mariadb
