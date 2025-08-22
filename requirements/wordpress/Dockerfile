@@ -1,11 +1,10 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
-RUN apt update && apt upgrade -y && apt install -y php7.4-fpm php-mysqli curl netcat
+RUN apt update && apt upgrade -y && apt-get install -y php8.2-fpm php-mysql curl netcat-openbsd
 
-COPY www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
 COPY script.sh .
 
-RUN mkdir /run/php
 RUN chmod +x script.sh
 
 EXPOSE 9000

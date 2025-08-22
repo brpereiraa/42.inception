@@ -7,7 +7,7 @@ services:
       - "443:443"
     volumes: 
       - web:/var/www/html
-      - ./secrets:/etc/nginx/secrets
+      - ./secrets/tls:/etc/nginx/secrets
     depends_on:
       - wordpress
       - mariadb
