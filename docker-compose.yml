@@ -2,6 +2,7 @@ services:
   nginx:
     build: requirements/nginx/.
     container_name: nginx
+    env_file: .env
     ports:
       - "80:80" 
       - "443:443"
@@ -17,6 +18,11 @@ services:
   wordpress:
     build: requirements/wordpress/.
     container_name: wp-php
+    env_file: .env
+    environment:
+      - DOMAIN=$(wp_domain)
+      - ADMIN_USER=$(wp_admin)
+      - ADMIN_PASSWORD=$(wp_admin_password)
     volumes:
       - web:/var/www/html
     depends_on:
@@ -27,6 +33,9 @@ services:
   mariadb:
     build: requirements/mariadb/.
     container_name: mariadb
+    env_file: .env
+    environment:
+      - MYSQL_DATABASE=$()
     volumes:
       - database:/var/lib/mysql
     networks:

@@ -17,6 +17,7 @@ if [ ! -f wp-config.php ]; then
     ./wp-cli.phar core download --allow-root
     ./wp-cli.phar config create --dbname=wordpress --dbuser=wpuser --dbpass=password --dbhost=mariadb --allow-root
     ./wp-cli.phar core install --url=localhost --title=testing --admin_user=admin --admin_password=admin --admin_email=admin@admin.com --allow-root
+	./wp-cli.phar user create "USER" "USERMAIL" --role=author --user_pass=pass --allow-root
     echo "WordPress setup completed!"
 else
     echo "WordPress already configured, skipping setup..."
