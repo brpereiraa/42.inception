@@ -20,9 +20,15 @@ services:
     container_name: wp-php
     env_file: .env
     environment:
-      - DOMAIN=$(wp_domain)
-      - ADMIN_USER=$(wp_admin)
-      - ADMIN_PASSWORD=$(wp_admin_password)
+      - DOMAIN=${WP_URL}
+      - ADMIN_USER=${WP_ADMIN_USER}
+      - ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
+      - ADMIN_EMAIL=${WP_ADMIN_EMAIL}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_USER_MAIL=
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
     volumes:
       - web:/var/www/html
     depends_on:
@@ -35,7 +41,10 @@ services:
     container_name: mariadb
     env_file: .env
     environment:
-      - MYSQL_DATABASE=$()
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
     volumes:
       - database:/var/lib/mysql
     networks:
