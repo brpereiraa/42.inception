@@ -26,13 +26,13 @@ if [ ! -f wp-config.php ]; then
 
     ./wp-cli.phar core install \
         --url="$DOMAIN" \
-        --title="testing" \
+        --title="Inception" \
         --admin_user="$ADMIN_USER" \
         --admin_password="$ADMIN_PASSWORD" \
         --admin_email="$ADMIN_EMAIL" \
         --allow-root
 
-    ./wp-cli.phar user create \ 
+    ./wp-cli.phar user create \
         "$WP_USER" \
         "$WP_USER_EMAIL" \
         --user_pass="$WP_USER_PASSWORD" \
